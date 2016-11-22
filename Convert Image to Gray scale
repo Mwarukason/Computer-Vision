@@ -1,0 +1,28 @@
+#Image conversion to grayscale.
+#Simple codes to convert image into grayscale.
+#Mwarukason @ 2016
+
+#Import opencv libralies
+import cv2
+import numpy as np
+
+#Load or read image from the file
+#Eg. image = cv2.imread('obama.jpg')
+Orgimage = cv2.imread('Image Path')
+
+#Convert original image to grayscale
+gray_image = cv2.cvtColor(Orgimage, cv2.COLOR_BGR2GRAY)
+
+#create new converted grayscale image 
+cv2.imwrite('gray_image.png', gray_image)
+
+#Show into new windows both images (Original and Grayscale)
+cv2.imshow('color_image', Orgimage)
+cv2.imshow('gray_image', gray_image)
+
+#Press any key to end the program
+cv2.waitKey(0) 
+
+#close all displayed windows
+cv2.destroyAllWindows()
+
