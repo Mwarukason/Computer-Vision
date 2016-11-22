@@ -1,0 +1,41 @@
+"""The program will create three windows with different orientation Original, grayscale and Bluegray
+   the image will be converted into grayscale and then blue """
+   
+   
+   #Import modules for openCV
+import cv2
+import numpy as np
+
+#Initilizes the video from webcam
+#Note: If you are using extenal webcam, You may
+#change the parameter value if you use more than one camera
+#Eg. cap = cv2.VideoCapture(1) 
+cap = cv2.VideoCapture(0)
+
+#enter the loop if is true, camera read correctly
+while(1):
+ # Take each frame from the live camera
+    _,frame = cap.read()
+     
+    #Conversion occur from BGR to HSV
+    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+
+# define range of blue color in HSV
+    lower_blue = np.array([110,50,50])
+    upper_blue = np.array([130,255,255])
+
+ # Threshold the HSV image to get only blue colors
+    mask = cv2.inRange(hsv, lower_blue, upper_blue)
+
+# Bitwise-AND mask and original image
+    res = cv2.bitwise_and(frame,frame, mask= mask)
+
+    cv2.imshow('Original Frame',frame)
+    cv2.imshow('Masked  Window',mask)
+    cv2.imshow('Gray Scale Image',res)
+    k = cv2.waitKey(5) & 0xFF
+    if k == 27:
+        break    
+
+#Destroy all value 
+cv2.destroyAllWindows()
