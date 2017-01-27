@@ -7,7 +7,7 @@ import cv2
 import numpy as np
 
 #Load or read image from the file
-#Eg. image = cv2.imread('obama.jpg')
+#Eg. image = cv2.imread('amri.jpg')
 Orgimage = cv2.imread('Image Path')
 
 #Convert original image to grayscale
